@@ -15,10 +15,9 @@ This guide demonstrates how to create a 3-node Kubernetes cluster on **Google Ku
 
 ## 🛠️ Step-by-Step Setup
 
-### 1. Set Project and Zone Variables
+### 1. Set Zone Variable
 
 ```bash
-export PROJECT=<your-project-id>
 export ZONE=<your-zone>
 ```
 
@@ -32,23 +31,14 @@ gcloud services enable compute.googleapis.com container.googleapis.com
 
 ### 3. Create the GKE Cluster
 
-This command creates a 3-node cluster with workload identity, fleet registration, and the Gateway API enabled:
+This command creates a 3-node cluster with workload identity and the Gateway API enabled:
 
 ```bash
 gcloud container clusters create nginx-cluster \
   --zone $ZONE \
   --release-channel rapid \
   --num-nodes 3 \
-  --labels mesh_id=proj-729192071368 \
-  --workload-pool=$PROJECT.svc.id.goog \
-  --gateway-api=standard \
-  --enable-fleet
-```
-
-Enable GKE Hub (Fleet):
-
-```bash
-gcloud container fleet mesh enable
+  --gateway-api=standard
 ```
 
 ---
