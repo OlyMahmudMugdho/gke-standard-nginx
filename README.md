@@ -38,7 +38,8 @@ gcloud container clusters create nginx-cluster \
   --zone $ZONE \
   --release-channel rapid \
   --num-nodes 3 \
-  --gateway-api=standard
+  --gateway-api=standard \
+  --machine-type e2-standard-4
 ```
 
 ---
